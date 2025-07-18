@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap');
+
+/* Base styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  max-width: 100vw;
+  max-height: 100vh;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+.canvas-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 400vh;
+  pointer-events: none;
+}
+
+.section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.section1 {
+  background-color: #1A1C3C;
+  color: #F7E8BE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3.5rem;
+  text-align: center;
+  font-family: 'Sawarabi Mincho', serif;
+}
+
+.section2 {
+  background-color: #2C2F54;
+  color: #FFCCE2;
+}
+
+.section3 {
+  background-color: #FFE5F0;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 5vw;
+}
+
+.birthday-text {
+  font-family: 'Sawarabi Mincho', serif;
+  font-size: 3.5rem;
+  color: #D84C6F;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  text-shadow:
+    0 0 5px #FFCCE2,
+    0 0 10px #FF99CC,
+    0 0 20px #FF66B3;
+  animation: glowText 2s ease-in-out infinite;
+  -webkit-animation: glowText 2s ease-in-out infinite;
+  margin-top: 0px;
+  margin-right: 100px;
+}
+
+@keyframes glowText {
+  0% { text-shadow: 0 0 5px #ff99cc; }
+  50% { text-shadow: 0 0 15px #ff66b3; }
+  100% { text-shadow: 0 0 5px #ff99cc; }
+}
+
+@-webkit-keyframes glowText {
+  0% { text-shadow: 0 0 5px #ff99cc; }
+  50% { text-shadow: 0 0 15px #ff66b3; }
+  100% { text-shadow: 0 0 5px #ff99cc; }
+}
+
+.vertical-japanese {
+  position: fixed;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 4.5rem;
+  font-family: 'Noto Sans JP', sans-serif;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  color: white;
+  z-index: 100;
+  pointer-events: none;
+  text-shadow:
+    0 0 5px #ff80c0,
+    0 0 10px #ff66a3,
+    0 0 20px #ff3380,
+    0 0 40px #ff1a66;
+  animation: neonPulse 2s ease-in-out infinite;
+  -webkit-animation: neonPulse 2s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+  0% { text-shadow: 0 0 5px #ff80c0, 0 0 10px #ff66a3, 0 0 20px #ff3380, 0 0 40px #ff1a66; }
+  50% { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff80bf, 0 0 30px #ff66b3, 0 0 50px #ff4da6; }
+  100% { text-shadow: 0 0 5px #ff80c0, 0 0 10px #ff66a3, 0 0 20px #ff3380, 0 0 40px #ff1a66; }
+}
+
+@-webkit-keyframes neonPulse {
+  0% { text-shadow: 0 0 5px #ff80c0, 0 0 10px #ff66a3, 0 0 20px #ff3380, 0 0 40px #ff1a66; }
+  50% { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff80bf, 0 0 30px #ff66b3, 0 0 50px #ff4da6; }
+  100% { text-shadow: 0 0 5px #ff80c0, 0 0 10px #ff66a3, 0 0 20px #ff3380, 0 0 40px #ff1a66; }
+}
+
+
+/* --- Mobile Responsiveness --- */
+@media screen and (max-width: 768px) {
+  .section {
+    flex-direction: column;
+    font-size: 1.5rem;
+    padding: 0 10px;
+  }
+
+  .section1 {
+    font-size: 2rem;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .section3 {
+    justify-content: center;
+    padding-right: 0;
+  }
+
+  .birthday-text {
+    z-index: 10;
+    font-size: 2.4rem;
+    margin-right: 0;
+    margin-top: -80px; /* <--- Moved slightly higher */
+    writing-mode: horizontal-tb;
+    text-align: center;
+  }
+
+  .vertical-japanese {
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    font-size: 2.4rem;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    text-align: center;
+    width: 100%;
+    color: white;
+    background-color: transparent;
+    z-index: 9999 !important;
+  }
+
+  .canvas-wrapper {
+    height: auto;
+    min-height: 100vh;
+  }
+}
