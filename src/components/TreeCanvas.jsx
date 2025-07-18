@@ -2,25 +2,29 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF, Stars } from '@react-three/drei';
 import { Suspense, useRef, useEffect, useState, useMemo } from 'react';
 
+
 function SakuraTree() {
   const { scene } = useGLTF('/models/sakura_tree.glb');
   const treeRef = useRef();
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useFrame(() => {
     if (treeRef.current) {
-      treeRef.current.rotation.y = scrollY * 0.0005;
+      treeRef.current.rotation.y += 0.0005; // Constant slow spin
     }
   });
 
-  return <primitive ref={treeRef} object={scene} scale={18} position={[0, -3.5, 0]} />;
+  return (
+    <primitive
+      ref={treeRef}
+      object={scene}
+      scale={17}
+      position={[0, -3.5, 0]}
+      rotation={[0.2, 0, 0]}
+    />
+  );
 }
+
+
 
 // 🌸 Sakura Petals Falling
 function Petal({ position, speed }) {
