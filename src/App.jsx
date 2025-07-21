@@ -20,7 +20,7 @@ function App() {
       <section className="section section2"><h1></h1></section>
       
       <section className="section section3">
-            <div className="birthday-text"><h6>HAPPY BIRTHDAY</h6><h3><b>CHANDHANA</b></h3></div>
+            <div className="birthday-text"><h6>HAPPY BIRTHDAY</h6><h3><b>CHANDANA</b></h3></div>
         </section>
 
       <FinalCanvas />
